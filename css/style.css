@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(#ffffff, #ffe0f0);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 85px;
+  height: 100%;
+  background: #f18fe072;
+  backdrop-filter: blur(5px);
+  padding: 20px 0 20px 0;
+  overflow-y: auto;
+  transition: 0.3s ease;
+  z-index: 1000;
+}
+
+.menu:hover {
+  width: 260px;
+}
+
+.menu-content li {
+  list-style: none;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  transition: background 0.3s;
+  border-radius: 0 50px 50px 0;
+}
+
+.menu-content li:hover {
+  background: #ea7cea;
+}
+
+.menu-content a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.menu-content li span:nth-child(2) {
+  display: none;
+}
+
+.menu:hover li span:nth-child(2) {
+  display: inline;
+  margin-left: 10px;
+}
+
+.material-symbols-outlined {
+  background: #9d4caf;
+  color: #fff;
+  padding: 10px;
+  font-size: 25px;
+  border-radius: 50%;
+}
+
+.container {
+  margin-left: 85px;
+  padding: 20px;
+  position: relative;
+}
+
+header {
+  background: #9d4caf;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+header nav a {
+  color: #fff;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.btn {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn_item {
+  background: white;
+  border-radius: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 10px 30px;
+  transition: all 0.3s ease;
+}
+
+.btn_item:hover {
+  background: #ff4081;
+}
+
+.btn_item a {
+  color: #333;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.btn_item:hover a {
+  color: white;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #333;
+}
+
+/* Sakura (Leaf) Animation */
+.sakura {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.leaf {
+  position: absolute;
+  top: -5%;
+  width: 12px;
+  height: 20px;
+  background: radial-gradient(ellipse at center, #ffcad4 0%, #f88fb1 100%);
+  border-radius: 60% 40% 60% 40%;
+  animation: fall 10s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) translateX(var(--sway)) rotate(360deg);
+  }
+}
+
+/* Random pozisyonlar için farklı delay ve sol pozisyonlar */
+.leaf:nth-child(n) {
+  left: calc(100% * var(--i));
+  animation-delay: calc(var(--i) * 0.5s);
+  --sway: calc(30vw - 60vw * var(--i));
+}
+
+/* Bu varsayımları desteklemesi için JS yerine sabit diziler: */
+.leaf:nth-child(1) { left: 5%; animation-delay: 0s; --sway: 10vw; }
+.leaf:nth-child(2) { left: 15%; animation-delay: 1s; --sway: -10vw; }
+.leaf:nth-child(3) { left: 25%; animation-delay: 2s; --sway: 5vw; }
+.leaf:nth-child(4) { left: 35%; animation-delay: 3s; --sway: -5vw; }
+.leaf:nth-child(5) { left: 45%; animation-delay: 4s; --sway: 15vw; }
+.leaf:nth-child(6) { left: 55%; animation-delay: 5s; --sway: -15vw; }
+.leaf:nth-child(7) { left: 65%; animation-delay: 6s; --sway: 8vw; }
+.leaf:nth-child(8) { left: 75%; animation-delay: 7s; --sway: -8vw; }
+.leaf:nth-child(9) { left: 85%; animation-delay: 8s; --sway: 12vw; }
+.leaf:nth-child(10) { left: 95%; animation-delay: 9s; --sway: -12vw; }
+/* Daha fazlasını da bu şekilde çoğaltabilirsin */
+
+@media (max-width: 768px) {
+  .menu {
+    width: 65px;
+  }
+
+  .menu:hover {
+    width: 200px;
+  }
+
+  .container {
+    margin-left: 65px;
+  }
+}
+
+form label,
+  form input,
+  form button, 
+  .form_section{
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+  }
+  
+
