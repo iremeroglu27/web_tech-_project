@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
+  <!-- Sayfanın karakter setini ve responsive yapılandırmasını ayarlıyoruz -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Sayfa başlığı -->
   <title>Wizzle - Create Your Free Account</title>
+
+  <!-- Google ikon fontunu yüklüyoruz -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <!-- Harici CSS dosyasını bağlıyoruz -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
+  <!-- Sol taraftaki menü (sidebar) -->
   <div class="menu">
+    <!-- Menü içeriği -->
     <ul class="menu-content">
       <li><a href="index.html"><span class="material-symbols-outlined">home</span><span>Ana Sayfa</span></a></li>
       <li><a href="lesson.html"><span class="material-symbols-outlined">menu_book</span><span>Dersler</span></a></li>
@@ -21,12 +31,11 @@
   </div>
 
   <div class="container">
+    <!-- Sayfada görsel efekt olarak sakura yaprakları ekliyoruz -->
     <div class="sakura">
-      <!-- 80 yaprak üretelim -->
+      <!-- Yaprak elemanlarını oluşturuyoruz -->
+      <!-- Bunların hareketi CSS ile ayarlanacak -->
       <div class="leaf"></div>
-      
-      <!-- CSS ile :nth-child ile randomlaştırılacak -->
-      <!-- .leaf 80 defa -->
       <div class="leaf"></div>
       <div class="leaf"></div>
       <div class="leaf"></div>
@@ -68,36 +77,42 @@
       <div class="leaf"></div>
     </div>
 
-  <div class="sayfa">
+    <!-- Sayfa genel içeriği -->
+    <div class="sayfa">
+      <!-- Sayfa başlığı ve navigasyon menüsü -->
+      <header>
+        <h1>Wizzle</h1>
+        <nav>
+          <a href="index.html">Ana Sayfa</a>
+          <a href="login.html">Giriş</a>
+        </nav>
+      </header>
 
-    <header>
-    <h1>Wizzle</h1>
-    <nav>
-      <a href="index.html">Ana Sayfa</a>
-      <a href="login.html">Giriş</a>
-    </nav>
-  </header>
+      <!-- Ana içerik kısmı -->
+      <main>
+        <section class="form-section">
+          <h2 style="text-align: center;">Kayıt Ol</h2>
 
-  <main>
-    <section class="form-section">
-      <h2 style="text-align: center;">Kayıt Ol</h2>
-      <form>
-        <label>Ad:</label>
-        <input type="text" required />
-        <label>Email:</label>
-        <input type="email" required />
-        <label>Şifre:</label>
-        <input type="password" required />
-        <button class="btn_item" type="submit">Kayıt Ol</button>
-      </form>
-    </section>
-  </main>
+          <!-- Ana içerik kısmı -->
+          <form>
+            <label>Ad:</label>
+            <input type="text" required />
+            <label>Email:</label>
+            <input type="email" required />
+            <label>Şifre:</label>
+            <input type="password" required />
+            <button class="btn_item" type="submit">Kayıt Ol</button>
+          </form>
+        </section>
+      </main>
 
-  <footer>
-    <p>&copy; 2025 Wizzle</p>
-  </footer>
-  </div>
-  
+      <!-- Alt bilgi (footer) kısmı -->
+      <footer>
+        <p>&copy; 2025 Wizzle</p>
+      </footer>
+    </div>
+
 
 </body>
+
 </html>

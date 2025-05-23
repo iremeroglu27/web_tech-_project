@@ -1,31 +1,42 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
+  <!-- Sayfanın karakter setini ve responsive yapılandırmasını ayarlıyoruz -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Sayfa başlığı -->
   <title>Wizzle - Learn Languages the Fun Way</title>
+
+  <!-- Google ikon fontunu yüklüyoruz -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+  <!-- Harici CSS dosyasını bağlıyoruz -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
+
+
 <body>
+  <!-- Sol taraftaki menü (sidebar) -->
   <div class="menu">
+    <!-- Menü içeriği -->
     <ul class="menu-content">
-        <li><a href="index.html"><span class="material-symbols-outlined">home</span><span>Ana Sayfa</span></a></li>
-        <li><a href="lesson.html"><span class="material-symbols-outlined">menu_book</span><span>Dersler</span></a></li>
-        <li><a href="profile.html"><span class="material-symbols-outlined">person</span><span>Profil</span></a></li>
-        <li><a href="login.html"><span class="material-symbols-outlined">login</span><span>Giriş</span></a></li>
-        <li><a href="signup.html"><span class="material-symbols-outlined">person_add</span><span>Kayıt Ol</span></a></li>
-        <li><a href="#"><span class="material-symbols-outlined">logout</span><span>Çıkış</span></a></li>
+      <li><a href="index.html"><span class="material-symbols-outlined">home</span><span>Ana Sayfa</span></a></li>
+      <li><a href="lesson.html"><span class="material-symbols-outlined">menu_book</span><span>Dersler</span></a></li>
+      <li><a href="profile.html"><span class="material-symbols-outlined">person</span><span>Profil</span></a></li>
+      <li><a href="login.html"><span class="material-symbols-outlined">login</span><span>Giriş</span></a></li>
+      <li><a href="signup.html"><span class="material-symbols-outlined">person_add</span><span>Kayıt Ol</span></a></li>
+      <li><a href="#"><span class="material-symbols-outlined">logout</span><span>Çıkış</span></a></li>
     </ul>
   </div>
 
   <div class="container">
+    <!-- Sayfada görsel efekt olarak sakura yaprakları ekliyoruz -->
     <div class="sakura">
-      <!-- 80 yaprak üretelim -->
+      <!-- Yaprak elemanlarını oluşturuyoruz -->
+      <!-- Bunların hareketi CSS ile ayarlanacak -->
       <div class="leaf"></div>
-      <!-- 79 tane daha -->
-      <!-- CSS ile :nth-child ile randomlaştırılacak -->
-      <!-- .leaf 80 defa -->
       <div class="leaf"></div>
       <div class="leaf"></div>
       <div class="leaf"></div>
@@ -67,7 +78,9 @@
       <div class="leaf"></div>
     </div>
 
+    <!-- Sayfa genel içeriği -->
     <div class="sayfa">
+      <!-- Sayfa başlığı ve navigasyon menüsü -->
       <header>
         <h1>Wizzle</h1>
         <nav>
@@ -76,26 +89,31 @@
         </nav>
       </header>
 
+      <!-- Başlık ve alt çizgi -->
       <h1 style="text-align: center; color: #9d4caf;">Let's Learn English</h1>
       <hr style="width: 60%; margin: auto; margin-bottom: 30px;color: #9d4caf">
 
-
+      <!-- Ana içerik alanı -->
       <main>
         <section class="hero">
-            
-            <p style="text-align: center; color: #9d4caf;">İngilizce Öğrenmek Artık Çok Kolay.</p>
-           <div class="btn">
-              <div class="btn_item">
-                <a href="lesson.html"><span>Start</span></a>
-              </div>
-           </div>
+          <!-- Açıklama metni -->
+          <p style="text-align: center; color: #9d4caf;">İngilizce Öğrenmek Artık Çok Kolay.</p>
+
+          <!-- "Start" butonu -->
+          <div class="btn">
+            <div class="btn_item">
+              <a href="lesson.html"><span>Start</span></a>
+            </div>
+          </div>
         </section>
       </main>
 
+      <!-- Alt bilgi (footer) kısmı -->
       <footer>
         <p>&copy; 2025 Wizzle</p>
       </footer>
     </div>
   </div>
 </body>
+
 </html>

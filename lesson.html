@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
+  <!-- Sayfanın karakter setini ve responsive yapılandırmasını ayarlıyoruz -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Sayfa başlığı -->
   <title>Wizzle - Language Lessons</title>
+
+  <!-- Google ikon fontunu yüklüyoruz -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+  <!-- Harici CSS dosyasını bağlıyoruz -->
   <link href="css/style.css" rel="stylesheet">
+
+  <!-- Sayfa içi özel stiller -->
   <style>
-    
+    /* 768px üzeri ekranlar için seviye kutusu stilleri */
     @media (min-width: 768px) {
 
-    .level-box {
-      background: rgb(255, 255, 255);
-      padding: 20px;
-      border-radius: 8px;
-      width: 100%;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      .level-box {
+        background: rgb(255, 255, 255);
+        padding: 20px;
+        border-radius: 8px;
+        width: 100%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
     }
-  }
 
+    /* Geniş ekranlarda kutuların genişliği %40 olsun */
     @media (min-width: 768px) {
       .level-box {
         width: 40%;
       }
     }
 
+    /* Buton stil ayarları */
     .btn {
       display: block;
       width: 100%;
@@ -44,30 +56,33 @@
       background-color: #9d4caf;
     }
 
-
+    /*A1 ve A2 başlıkları*/
+    h2{
+      text-align: center;
+    }
   </style>
 </head>
-<body>
 
-    <div class="menu">
-        <ul class="menu-content">
-          <li><a href="index.html"><span class="material-symbols-outlined">home</span><span> Ana Sayfa</span></a></li>
-          <li><a href="lesson.html"><span class="material-symbols-outlined">menu_book</span><span> Dersler</span></a></li>
-          <li><a href="profile.html"><span class="material-symbols-outlined">person</span><span> Profil</span></a></li>
-          <li><a href="login.html"><span class="material-symbols-outlined">login</span><span> Giriş</span></a></li>
-          <li><a href="signup.html"><span class="material-symbols-outlined">person_add</span><span> Kayıt Ol</span></a></li>
-          <li><a href="#"><span class="material-symbols-outlined">logout</span><span> Çıkış</span></a></li>
-        </ul>
-    </div>
+<body>
+  <!-- Sol taraftaki menü (sidebar) -->
+  <div class="menu">
+    <!-- Menü içeriği -->
+    <ul class="menu-content">
+      <li><a href="index.html"><span class="material-symbols-outlined">home</span><span> Ana Sayfa</span></a></li>
+      <li><a href="lesson.html"><span class="material-symbols-outlined">menu_book</span><span> Dersler</span></a></li>
+      <li><a href="profile.html"><span class="material-symbols-outlined">person</span><span> Profil</span></a></li>
+      <li><a href="login.html"><span class="material-symbols-outlined">login</span><span> Giriş</span></a></li>
+      <li><a href="signup.html"><span class="material-symbols-outlined">person_add</span><span> Kayıt Ol</span></a></li>
+      <li><a href="#"><span class="material-symbols-outlined">logout</span><span> Çıkış</span></a></li>
+    </ul>
+  </div>
 
   <div class="container">
+    <!-- Sayfada görsel efekt olarak sakura yaprakları ekliyoruz -->
     <div class="sakura">
-      <!-- 80 yaprak üretelim -->
+      <!-- Yaprak elemanlarını oluşturuyoruz -->
+      <!-- Bunların hareketi CSS ile ayarlanacak -->
       <div class="leaf"></div>
-      
-      <!-- CSS ile :nth-child ile randomlaştırılacak -->
-      <!-- .leaf 80 defa -->
-      
       <div class="leaf"></div>
       <div class="leaf"></div>
       <div class="leaf"></div>
@@ -109,39 +124,48 @@
       <div class="leaf"></div>
     </div>
 
-    
-      <div class="sayfa">
-        <header>
-            <h1>Wizzle</h1>
-            <nav>
-              <a href="#">Ana Sayfa</a>
-              <a href="#">Profil</a>
-            </nav>
-        </header>
-        
-        <h1 style="text-align: center; color: #9d4caf;">DERSLER / LESSONS</h1>
-        <hr style="width: 60%; margin: auto; margin-bottom: 30px;color: #9d4caf">
-        <div class="container">
-          <div class="level-box">
-            <h2>A1</h2>
-            <a href="sayilar.html" class="btn">Sayılar/Numbers</a>
-            <a href="renkler.html" class="btn">Renkler/Colors</a>
-            <a href="aile.html" class="btn">Aile Bireyleri/Family Members</a>
-          </div>
-    
-          <div class="level-box">
-            <h2>A2</h2>
-            <a href="eylemler.html" class="btn">Günlük Eylemler/Daily Actions</a>
-            <a href="yiyecek.html" class="btn">Yiyecek-İçecek/Food-Drinks</a>
-            <a href="filmler.html" class="btn">Film Türleri/Movie Genres</a>
-          </div>
+    <!-- Sayfa genel içeriği -->
+    <div class="sayfa">
+      <!-- Sayfa başlığı ve navigasyon menüsü -->
+      <header>
+        <h1>Wizzle</h1>
+        <nav>
+          <a href="#">Ana Sayfa</a>
+          <a href="#">Profil</a>
+        </nav>
+      </header>
 
-          <footer>
-            <p>&copy; 2025 Wizzle</p>
-          </footer>
+      <!-- Başlık ve alt çizgi -->
+      <h1 style="text-align: center; color: #9d4caf;">DERSLER / LESSONS</h1>
+      <hr style="width: 60%; margin: auto; margin-bottom: 30px;color: #9d4caf">
+      
+      <!-- İçerik kutularını tutan container -->
+      <div class="main-container">
+
+        <!-- A1 Seviyesi Dersleri -->
+        <div class="level-box">
+          <h2>A1</h2>
+          <a href="sayilar.html" class="btn">Sayılar/Numbers</a>
+          <a href="renkler.html" class="btn">Renkler/Colors</a>
+          <a href="aile.html" class="btn">Aile Bireyleri/Family Members</a>
         </div>
+
+        <!-- A2 Seviyesi Dersleri -->
+        <div class="level-box">
+          <h2>A2</h2>
+          <a href="eylemler.html" class="btn">Günlük Eylemler/Daily Actions</a>
+          <a href="yiyecek.html" class="btn">Yiyecek-İçecek/Food-Drinks</a>
+          <a href="filmler.html" class="btn">Film Türleri/Movie Genres</a>
+        </div>
+
+        <!-- Alt bilgi (footer) kısmı -->
+        <footer>
+          <p>&copy; 2025 Wizzle</p>
+        </footer>
       </div>
+    </div>
 
 
 </body>
+
 </html>

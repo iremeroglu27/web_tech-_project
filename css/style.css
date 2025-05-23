@@ -14,6 +14,7 @@ body {
   position: relative;
 }
 
+/* Menü */
 .menu {
   position: fixed;
   top: 0;
@@ -69,12 +70,14 @@ body {
   border-radius: 50%;
 }
 
+/* İçerik */
 .container {
   margin-left: 85px;
   padding: 20px;
   position: relative;
 }
 
+/* Başlık */
 header {
   background: #9d4caf;
   color: #fff;
@@ -91,6 +94,7 @@ header nav a {
   text-decoration: none;
 }
 
+/* Hero alanı */
 .hero {
   text-align: center;
   padding: 50px 20px;
@@ -125,13 +129,14 @@ header nav a {
   color: white;
 }
 
+/* Altbilgi */
 footer {
   text-align: center;
   padding: 20px;
   color: #333;
 }
 
-/* Sakura (Leaf) Animation */
+/* Sakura animasyonu */
 .sakura {
   position: absolute;
   top: 0;
@@ -163,14 +168,9 @@ footer {
   }
 }
 
-/* Random pozisyonlar için farklı delay ve sol pozisyonlar */
-.leaf:nth-child(n) {
-  left: calc(100% * var(--i));
-  animation-delay: calc(var(--i) * 0.5s);
-  --sway: calc(30vw - 60vw * var(--i));
-}
 
-/* Bu varsayımları desteklemesi için JS yerine sabit diziler: */
+
+/* Yapraklara özel konum ve animasyon gecikmeleri */
 .leaf:nth-child(1) { left: 5%; animation-delay: 0s; --sway: 10vw; }
 .leaf:nth-child(2) { left: 15%; animation-delay: 1s; --sway: -10vw; }
 .leaf:nth-child(3) { left: 25%; animation-delay: 2s; --sway: 5vw; }
@@ -181,8 +181,8 @@ footer {
 .leaf:nth-child(8) { left: 75%; animation-delay: 7s; --sway: -8vw; }
 .leaf:nth-child(9) { left: 85%; animation-delay: 8s; --sway: 12vw; }
 .leaf:nth-child(10) { left: 95%; animation-delay: 9s; --sway: -12vw; }
-/* Daha fazlasını da bu şekilde çoğaltabilirsin */
 
+/* Responsive ayarlar */
 @media (max-width: 768px) {
   .menu {
     width: 65px;
@@ -197,6 +197,7 @@ footer {
   }
 }
 
+/* Form öğeleri */
 form label,
   form input,
   form button, 
@@ -206,4 +207,12 @@ form label,
     text-align: center;
   }
   
+.main-container {
+  display: flex;
+  justify-content: center; /* yatay ortalama */
+  align-items: center;     /* dikey ortalama */
+  min-height: 30vh;        /* sayfa yüksekliğinin %80'i kadar yükseklik veriyoruz */
+  padding-top: 20px;       /* başlıktan biraz boşluk bırakmak için */
+  flex-direction: column;  /* dikey hizalama */
+}
 
