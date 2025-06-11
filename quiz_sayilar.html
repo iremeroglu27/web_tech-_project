@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Sayılar - Quiz</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -80,7 +82,19 @@
 </head>
 <body>
 
-  <h1>Sayılar / Numbers - Quiz</h1>
+ <div class="menu">
+    <ul class="menu-content">
+      <li><a href="index.html"><span class="material-symbols-outlined">home</span><span> Ana Sayfa</span></a></li>
+      <li><a href="lesson.html"><span class="material-symbols-outlined">menu_book</span><span> Dersler</span></a></li>
+      <li><a href="profile.html"><span class="material-symbols-outlined">person</span><span> Profil</span></a></li>
+      <li><a href="login.html"><span class="material-symbols-outlined">login</span><span> Giriş</span></a></li>
+      <li><a href="signup.html"><span class="material-symbols-outlined">person_add</span><span> Kayıt Ol</span></a></li>
+      <li><a href="#"><span class="material-symbols-outlined">logout</span><span> Çıkış</span></a></li>
+    </ul>
+  </div>
+
+    <h1 style="margin-bottom: 30px; color: #9d4caf;">Sayılar / Numbers - Quiz</h1>
+    <hr>
   <div id="quiz-container"></div>
   <div id="scoreBox"></div>
 
@@ -166,6 +180,19 @@
       quizContainer.appendChild(box);
     });
   </script>
+
+  <footer>
+      <p>&copy; 2025 Wizzle</p>
+      <div class="contact-info">
+          
+          <a href="index.html" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;">Ana Sayfa</a>
+          <a href="lesson.html" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;">Dersler</a>
+          <a href="profile.html" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;">Profil</a>
+          <a href="login.html" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;">Giris Yap</a>
+          <a href="signup.html" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;">Kayıt Ol</a>
+          <a href="mailto:wizzleducation@gmail.com" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;" >Email</a>
+        </div>
+    </footer>
 </body>
 </html>
 

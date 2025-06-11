@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Aile Bireyleri - Quiz</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -74,28 +76,51 @@
 </head>
 <body>
 
-  <h1>Aile Bireyleri / Family Members - Quiz</h1>
+  <div class="menu">
+    <ul class="menu-content">
+      <li><a href="index.html"><span class="material-symbols-outlined">home</span><span> Ana Sayfa</span></a></li>
+      <li><a href="lesson.html"><span class="material-symbols-outlined">menu_book</span><span> Dersler</span></a></li>
+      <li><a href="profile.html"><span class="material-symbols-outlined">person</span><span> Profil</span></a></li>
+      <li><a href="login.html"><span class="material-symbols-outlined">login</span><span> Giriş</span></a></li>
+      <li><a href="signup.html"><span class="material-symbols-outlined">person_add</span><span> Kayıt Ol</span></a></li>
+      <li><a href="#"><span class="material-symbols-outlined">logout</span><span> Çıkış</span></a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+
+    <header>
+      <h1 style="color: #fff;">Wizzle</h1>
+      <nav>
+        <a style="color: #fff;" href="index.html">Ana Sayfa</a>
+        <a style="color: #fff;" href="profile.html">Profil</a>
+      </nav>
+    </header>
+  </div>
+    <h1 style="margin-bottom: 30px; color: #9d4caf;">Aile Bireyleri / Family Members - Quiz</h1>
+    <hr>
   <div id="quiz-container"></div>
   <div id="scoreBox"></div>
 
   <script>
     const quizData = [
-      { q: "My ______ is my mother's husband.", options: ["father", "uncle", "cousin", "brother"], correct: 0 },
-      { q: "My ______ is my dad's sister.", options: ["aunt", "cousin", "brother", "mother"], correct: 0 },
-      { q: "My ______ is my mom’s mom.", options: ["grandmother", "sister", "aunt", "cousin"], correct: 0 },
-      { q: "My ______ is my sibling.", options: ["brother", "uncle", "father", "baby"], correct: 0 },
-      { q: "I love my ______. He is very old.", options: ["grandfather", "son", "baby", "cousin"], correct: 0 },
-      { q: "Bu benim annem.", options: ["This is my mother", "That is my mother", "She is my mother", "My this is mother"], correct: 0 },
-      { q: "O benim erkek kardeşim.", options: ["He is my brother", "Brother is my he", "My he is brother", "He my brother is"], correct: 0 },
-      { q: "Onun iki çocuğu var.", options: ["She has two children", "Two children she has", "She have two children", "Children she two has"], correct: 0 },
-      { q: "Büyükbabam çok yaşlı.", options: ["My grandfather is very old", "Very old my grandfather is", "Grandfather is very old my", "Old is my grandfather"], correct: 0 },
-      { q: "Kuzenim Almanya’da yaşıyor.", options: ["My cousin lives in Germany", "Cousin my live Germany", "My cousin live Germany", "My cousin living in Germany"], correct: 0 },
-      { q: "Choose the correct sentence:", options: ["She is my sister", "She my is sister", "Sister she is", "My she is sister"], correct: 0 },
-      { q: "Which is correct?", options: ["He has a big family", "He have a big family", "He having a big family", "He has big a family"], correct: 0 },
-      { q: "“They are my cousins.” – What is the verb?", options: ["are", "cousins", "they", "my"], correct: 0 },
-      { q: "Which sentence is grammatically correct?", options: ["My aunt lives in Paris", "My aunt live in Paris", "Aunt my lives in Paris", "My aunt living in Paris"], correct: 0 },
-      { q: "What is the plural of “family member”?", options: ["family members", "familys member", "families member", "member family"], correct: 0 }
-    ];
+  { q: "My ______ is my mother's husband.", options: ["uncle", "father", "cousin", "brother"], correct: 1 },
+  { q: "My ______ is my dad's sister.", options: ["cousin", "aunt", "brother", "mother"], correct: 1 },
+  { q: "My ______ is my mom’s mom.", options: ["sister", "aunt", "grandmother", "cousin"], correct: 2 },
+  { q: "My ______ is my sibling.", options: ["uncle", "brother", "father", "baby"], correct: 1 },
+  { q: "I love my ______. He is very old.", options: ["son", "baby", "grandfather", "cousin"], correct: 2 },
+  { q: "Bu benim annem.", options: ["That is my mother", "She is my mother", "My this is mother", "This is my mother"], correct: 3 },
+  { q: "O benim erkek kardeşim.", options: ["He my brother is", "Brother is my he", "He is my brother", "My he is brother"], correct: 2 },
+  { q: "Onun iki çocuğu var.", options: ["She have two children", "Children she two has", "She has two children", "Two children she has"], correct: 2 },
+  { q: "Büyükbabam çok yaşlı.", options: ["Very old my grandfather is", "Grandfather is very old my", "My grandfather is very old", "Old is my grandfather"], correct: 2 },
+  { q: "Kuzenim Almanya’da yaşıyor.", options: ["Cousin my live Germany", "My cousin live Germany", "My cousin lives in Germany", "My cousin living in Germany"], correct: 2 },
+  { q: "Choose the correct sentence:", options: ["She my is sister", "She is my sister", "Sister she is", "My she is sister"], correct: 1 },
+  { q: "Which is correct?", options: ["He has a big family", "He having a big family", "He has big a family", "He have a big family"], correct: 0 },
+  { q: "“They are my cousins.” – What is the verb?", options: ["they", "my", "cousins", "are"], correct: 3 },
+  { q: "Which sentence is grammatically correct?", options: ["My aunt live in Paris", "Aunt my lives in Paris", "My aunt living in Paris", "My aunt lives in Paris"], correct: 3 },
+  { q: "What is the plural of “family member”?", options: ["familys member", "family members", "families member", "member family"], correct: 1 }
+];
+
 
     const quizContainer = document.getElementById("quiz-container");
     const scoreBox = document.getElementById("scoreBox");
@@ -171,5 +196,18 @@
       quizContainer.appendChild(box);
     });
   </script>
+
+  <footer>
+      <p>&copy; 2025 Wizzle</p>
+      <div class="contact-info">
+          
+          <a href="index.html" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;">Ana Sayfa</a>
+          <a href="lesson.html" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;">Dersler</a>
+          <a href="profile.html" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;">Profil</a>
+          <a href="login.html" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;">Giris Yap</a>
+          <a href="signup.html" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;">Kayıt Ol</a>
+          <a href="mailto:wizzleducation@gmail.com" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;" >Email</a>
+        </div>
+    </footer>
 </body>
 </html>
