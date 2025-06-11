@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Yiyecek ve İçecekler - Quiz</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fff0f5;
+      padding: 30px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #9d4caf;
+    }
+
+    .question-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .question {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .options button {
+      display: block;
+      margin: 8px 0;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      background: #eee;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .options button:hover {
+      background: #ddd;
+    }
+
+    .correct {
+      background-color: #c8e6c9 !important;
+      color: green;
+    }
+
+    .incorrect {
+      background-color: #ffcdd2 !important;
+      color: red;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .answer {
+      margin-top: 5px;
+      color: #555;
+      font-style: italic;
+    }
+
+    #scoreBox {
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #6a1b9a;
+      margin-top: 40px;
+      border-top: 2px solid #9d4caf;
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Yiyecek ve İçecekler / Food and Drinks - Quiz</h1>
+  <div id="quiz-container"></div>
+  <div id="scoreBox"></div>
+
+  <script>
+    const quizData = [
+      { q: "I usually drink ______ in the morning.", options: ["juice", "soup", "bread", "rice"], correct: 0 },
+      { q: "She eats ______ for breakfast.", options: ["coffee", "chicken", "cereal", "water"], correct: 2 },
+      { q: "We always have ______ with lunch.", options: ["tea", "sugar", "cheese", "dinner"], correct: 0 },
+      { q: "They don’t like ______ on their pizza.", options: ["tomatoes", "apples", "oranges", "bananas"], correct: 0 },
+      { q: "My father never eats ______. He is vegetarian.", options: ["meat", "salad", "vegetables", "potatoes"], correct: 0 },
+      { q: "She ______ like spicy food.", options: ["don't", "doesn't", "isn't", "not"], correct: 1 },
+      { q: "What ______ you eat for dinner?", options: ["does", "are", "do", "did"], correct: 2 },
+      { q: "We ______ breakfast at 7 a.m.", options: ["has", "have", "having", "had"], correct: 1 },
+      { q: "He ______ orange juice every morning.", options: ["drink", "drinks", "drinking", "is drinking"], correct: 1 },
+      { q: "They ______ eat fish.", options: ["doesn’t", "not", "don’t", "aren’t"], correct: 2 },
+      { q: "O her gün kahve içer.", options: ["He drinks coffee every day.", "He eats coffee every day.", "He goes to coffee every day.", "He drinks tea every day."], correct: 0 },
+      { q: "Biz akşam yemeğinde makarna yeriz.", options: ["We drink pasta at dinner.", "We have pasta for dinner.", "We go pasta for dinner.", "We do pasta for dinner."], correct: 1 },
+      { q: "Onlar sabahları süt içer.", options: ["They eat milk in the morning.", "They make milk in the morning.", "They drink milk in the morning.", "They take milk in the morning."], correct: 2 },
+      { q: "Annem pazardan sebze alır.", options: ["My mom buys fruit from the market.", "My mom buys vegetables from the market.", "My mom cooks vegetables at the market.", "My mom drinks vegetables from the market."], correct: 1 },
+      { q: "Ben tatlı sevmem.", options: ["I don’t like salty food.", "I like dessert.", "I don’t like dessert.", "I eat dessert."], correct: 2 }
+    ];
+
+    const quizContainer = document.getElementById("quiz-container");
+    const scoreBox = document.getElementById("scoreBox");
+
+    let totalScore = 0;
+    let answeredCount = 0;
+
+    quizData.forEach((item, index) => {
+      const box = document.createElement("div");
+      box.className = "question-box";
+
+      const question = document.createElement("div");
+      question.className = "question";
+      question.textContent = `${index + 1}. ${item.q}`;
+      box.appendChild(question);
+
+      const options = document.createElement("div");
+      options.className = "options";
+
+      item.options.forEach((opt, i) => {
+        const btn = document.createElement("button");
+        btn.textContent = opt;
+
+        btn.onclick = function () {
+          if (btn.parentNode.querySelector(".correct, .incorrect")) return;
+
+          const allButtons = btn.parentNode.querySelectorAll("button");
+          allButtons.forEach(b => b.disabled = true);
+
+          const feedback = document.createElement("div");
+          feedback.className = "feedback";
+
+          if (i === item.correct) {
+            btn.classList.add("correct");
+            feedback.textContent = "✅ Doğru (True)";
+            totalScore += 5;
+          } else {
+            btn.classList.add("incorrect");
+            feedback.textContent = "❌ Yanlış (False)";
+            const answer = document.createElement("div");
+            answer.className = "answer";
+            answer.textContent = `Doğru cevap: ${item.options[item.correct]}`;
+            feedback.appendChild(answer);
+          }
+
+          answeredCount++;
+          if (answeredCount === quizData.length) {
+            scoreBox.innerHTML = `Toplam Puanınız: <strong>${totalScore}</strong> / ${quizData.length * 5}`;
+            const prevScore = parseInt(localStorage.getItem("totalScore")) || 0;
+            localStorage.setItem("totalScore", prevScore + totalScore);
+          }
+
+          box.appendChild(feedback);
+        };
+
+        options.appendChild(btn);
+      });
+
+      box.appendChild(options);
+      quizContainer.appendChild(box);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Film Türleri - Quiz</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fff0f5;
+      padding: 30px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #9d4caf;
+    }
+
+    .question-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .question {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .options button {
+      display: block;
+      margin: 8px 0;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      background: #eee;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .options button:hover {
+      background: #ddd;
+    }
+
+    .correct {
+      background-color: #c8e6c9 !important;
+      color: green;
+    }
+
+    .incorrect {
+      background-color: #ffcdd2 !important;
+      color: red;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .answer {
+      margin-top: 5px;
+      color: #555;
+      font-style: italic;
+    }
+
+    #scoreBox {
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #6a1b9a;
+      margin-top: 40px;
+      border-top: 2px solid #9d4caf;
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Film Türleri / Movie Genres - Quiz</h1>
+  <div id="quiz-container"></div>
+  <div id="scoreBox"></div>
+
+  <script>
+    const quizData = [
+      { q: "I like watching ______. They are funny and make me laugh.", options: ["horror films", "action films", "comedies", "documentaries"], correct: 2 },
+      { q: "She never watches ______ because she gets scared.", options: ["horror films", "dramas", "cartoons", "musicals"], correct: 0 },
+      { q: "My brother enjoys ______. He loves superheroes and fights.", options: ["action films", "romantic films", "history films", "animations"], correct: 0 },
+      { q: "They watched a ______ about animals in Africa.", options: ["musical", "documentary", "comedy", "thriller"], correct: 1 },
+      { q: "We like ______ because they have songs and dancing.", options: ["dramas", "thrillers", "musicals", "horrors"], correct: 2 },
+      { q: "He ______ romantic movies.", options: ["like", "likes", "liking", "to like"], correct: 1 },
+      { q: "What kind of films ______ you like?", options: ["does", "are", "do", "did"], correct: 2 },
+      { q: "We ______ go to the cinema on Fridays.", options: ["often", "don’t", "are", "does"], correct: 0 },
+      { q: "She doesn’t ______ science fiction.", options: ["likes", "liking", "like", "liked"], correct: 2 },
+      { q: "Do you ______ cartoons with your little sister?", options: ["watches", "watch", "watching", "to watch"], correct: 1 },
+      { q: "Ben aksiyon filmlerini severim.", options: ["I like action films.", "I watch horror films.", "I hate action films.", "I don’t like action films."], correct: 0 },
+      { q: "Kız kardeşim korku filmi izlemez.", options: ["My sister watches horror films.", "My sister doesn't watch horror films.", "My sister likes horror films.", "My sister sees horror films."], correct: 1 },
+      { q: "Cuma günleri sinemaya gideriz.", options: ["We go to the cinema on Fridays.", "We watch TV on Fridays.", "We go home on Fridays.", "We read books on Fridays."], correct: 0 },
+      { q: "O genellikle komedi izler.", options: ["He usually reads comedy.", "He never watches comedy.", "He usually watches comedy.", "He always writes comedy."], correct: 2 },
+      { q: "Belgeseller çok bilgilendiricidir.", options: ["Cartoons are very funny.", "Documentaries are very interesting.", "Documentaries are very informative.", "Dramas are very scary."], correct: 2 }
+    ];
+
+    const quizContainer = document.getElementById("quiz-container");
+    const scoreBox = document.getElementById("scoreBox");
+
+    let totalScore = 0;
+    let answeredCount = 0;
+
+    quizData.forEach((item, index) => {
+      const box = document.createElement("div");
+      box.className = "question-box";
+
+      const question = document.createElement("div");
+      question.className = "question";
+      question.textContent = `${index + 1}. ${item.q}`;
+      box.appendChild(question);
+
+      const options = document.createElement("div");
+      options.className = "options";
+
+      item.options.forEach((opt, i) => {
+        const btn = document.createElement("button");
+        btn.textContent = opt;
+
+        btn.onclick = function () {
+          if (btn.parentNode.querySelector(".correct, .incorrect")) return;
+
+          const allButtons = btn.parentNode.querySelectorAll("button");
+          allButtons.forEach(b => b.disabled = true);
+
+          const feedback = document.createElement("div");
+          feedback.className = "feedback";
+
+          if (i === item.correct) {
+            btn.classList.add("correct");
+            feedback.textContent = "✅ Doğru (True)";
+            totalScore += 5;
+          } else {
+            btn.classList.add("incorrect");
+            feedback.textContent = "❌ Yanlış (False)";
+            const answer = document.createElement("div");
+            answer.className = "answer";
+            answer.textContent = `Doğru cevap: ${item.options[item.correct]}`;
+            feedback.appendChild(answer);
+          }
+
+          answeredCount++;
+          if (answeredCount === quizData.length) {
+            scoreBox.innerHTML = `Toplam Puanınız: <strong>${totalScore}</strong> / ${quizData.length * 5}`;
+            const prevScore = parseInt(localStorage.getItem("totalScore")) || 0;
+            localStorage.setItem("totalScore", prevScore + totalScore);
+          }
+
+          box.appendChild(feedback);
+        };
+
+        options.appendChild(btn);
+      });
+
+      box.appendChild(options);
+      quizContainer.appendChild(box);
+    });
+  </script>
+</body>
+</html>

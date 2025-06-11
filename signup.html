@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wizzle - Create Your Free Account</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- Sol Menü -->
+  <div class="menu">
+    <ul class="menu-content">
+      <li><a href="index.html"><span class="material-symbols-outlined">home</span><span>Ana Sayfa</span></a></li>
+      <li><a href="lesson.html"><span class="material-symbols-outlined">menu_book</span><span>Dersler</span></a></li>
+      <li><a href="profile.html"><span class="material-symbols-outlined">person</span><span>Profil</span></a></li>
+      <li><a href="login.html"><span class="material-symbols-outlined">login</span><span>Giriş</span></a></li>
+      <li><a href="signup.html"><span class="material-symbols-outlined">person_add</span><span>Kayıt Ol</span></a></li>
+      <li><a href="#" onclick="logout()"><span class="material-symbols-outlined">logout</span><span>Çıkış</span></a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <!-- Sayfada görsel efekt olarak sakura yaprakları ekliyoruz -->
+    <div class="sakura">
+      <!-- Yaprak elemanlarını oluşturuyoruz -->
+      <!-- Bunların hareketi CSS ile ayarlanacak -->
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+
+    <!-- Sayfa İçeriği -->
+    <div class="sayfa">
+      <header>
+        <h1>Wizzle</h1>
+        <nav>
+          <a href="index.html">Ana Sayfa</a>
+          <a href="login.html">Giriş</a>
+        </nav>
+      </header>
+
+      <main>
+        <div class="form-container">
+          <h1 style="margin-bottom: 30px; color: #9d4caf;">Kayıt Ol</h1>
+          <form id="signupForm">
+            <input type="text" id="name" placeholder="Adınız" required />
+            <input type="email" id="email" placeholder="Email" required />
+            <input type="password" id="password" placeholder="Şifre" required />
+            <button type="submit">Kayıt Ol</button>
+          </form>
+          <p id="signupMessage" style="text-align:center; margin-top:10px;"></p>
+        </div>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 Wizzle</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Kayıt Scripti -->
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (localStorage.getItem(email)) {
+        document.getElementById("signupMessage").style.color = "red";
+        document.getElementById("signupMessage").textContent = "❌ Bu email zaten kayıtlı!";
+        return;
+      }
+
+      const user = {
+        name: name,
+        email: email,
+        password: password,
+        totalScore: 0 // Quiz puanı başlangıçta 0
+      };
+
+      localStorage.setItem(email, JSON.stringify(user));
+
+      document.getElementById("signupMessage").style.color = "green";
+      document.getElementById("signupMessage").textContent = "✅ Başarıyla kayıt olundu! Giriş yapabilirsiniz.";
+
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 2000);
+    });
+
+    function logout() {
+      localStorage.removeItem("currentUser");
+      alert("Çıkış yapıldı.");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

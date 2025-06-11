@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wizzle - Your Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .name-label {
+      font-size: 20px;
+      color: #5a2a8f;
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    #userName {
+      background-color: #f3e5f5;
+      font-size: 24px;
+      font-weight: bold;
+      color: #6a1b9a;
+      padding: 12px 24px;
+      border-radius: 12px;
+      text-align: center;
+      margin: 10px auto;
+      max-width: 250px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (!currentUser) {
+      alert("Profil sayfasını görüntülemek için giriş yapmalısınız.");
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <div class="menu">
+    <ul class="menu-content">
+      <li><a href="index.html"><span class="material-symbols-outlined">home</span><span>Ana Sayfa</span></a></li>
+      <li><a href="lesson.html"><span class="material-symbols-outlined">menu_book</span><span>Dersler</span></a></li>
+      <li><a href="profile.html"><span class="material-symbols-outlined">person</span><span>Profil</span></a></li>
+      <li><a href="login.html"><span class="material-symbols-outlined">login</span><span>Giriş</span></a></li>
+      <li><a href="signup.html"><span class="material-symbols-outlined">person_add</span><span>Kayıt Ol</span></a></li>
+      <li><a href="#" onclick="logout()"><span class="material-symbols-outlined">logout</span><span>Çıkış</span></a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <!-- Sayfada görsel efekt olarak sakura yaprakları ekliyoruz -->
+    <div class="sakura">
+      <!-- Yaprak elemanlarını oluşturuyoruz -->
+      <!-- Bunların hareketi CSS ile ayarlanacak -->
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+
+    <div class="sayfa">
+      <header>
+        <h1>Wizzle</h1>
+        <nav>
+          <a href="index.html">Ana Sayfa</a>
+          <a href="lesson.html">Dersler</a>
+        </nav>
+      </header>
+
+      <div class="main-container">
+        <div class="card" style="text-align: center;">
+          <div class="profile-img">
+            <img src="avatar.png" alt="Profile Picture" style="height: 250px; width: 200px; border-radius: 100px;">
+          </div>
+
+          <div class="name-label">Kullanıcı:</div>
+          <div id="userName">Yükleniyor...</div>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; 2025 Wizzle</p>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    document.getElementById("userName").textContent = user.name;
+
+    function logout() {
+      localStorage.removeItem("currentUser");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

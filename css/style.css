@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(#ffffff, #ffe0f0);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Sol Menü */
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 85px;
+  height: 100%;
+  background: #f18fe072;
+  backdrop-filter: blur(5px);
+  padding: 30px 0;
+  overflow-y: auto;
+  transition: 0.3s ease;
+  z-index: 1000;
+}
+
+.menu:hover {
+  width: 260px;
+}
+
+.menu-content li {
+  list-style: none;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  transition: background 0.3s;
+  border-radius: 0 50px 50px 0;
+}
+
+.menu-content li:hover {
+  background: #ea7cea;
+}
+
+.menu-content a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.menu-content li span:nth-child(2) {
+  display: none;
+}
+
+.menu:hover li span:nth-child(2) {
+  display: inline;
+  margin-left: 10px;
+}
+
+.material-symbols-outlined {
+  background: #9d4caf;
+  color: #fff;
+  padding: 10px;
+  font-size: 25px;
+  border-radius: 50%;
+}
+
+/* Genel Konteyner */
+.container {
+  margin-left: 85px;
+  padding: 20px;
+}
+
+/* Başlık */
+header {
+  background: #9d4caf;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+header nav a {
+  color: #fff;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+hr {
+  width: 60%;
+  margin: auto;
+  margin-bottom: 30px;
+  color: #9d4caf;
+}
+
+/* A1 A2 Kutuları */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.level-box {
+  background: #fff;
+  margin-top: 30px;
+  margin-bottom: 8px;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.level-box h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Ders Butonları */
+.lesson-btn {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #9d4caf;
+  color: white;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.lesson-btn:hover {
+  background-color: #7c3a91;
+}
+
+/* Modal Genel Stil */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+
+.modal-content h3 {
+  margin-bottom: 20px;
+  color: #9d4caf;
+}
+
+.modal-button {
+  display: block;
+  margin: 10px auto;
+  padding: 12px 25px;
+  background-color: #9d4caf;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  width: 80%;
+  transition: background-color 0.3s ease;
+}
+
+.modal-button:hover {
+  background-color: #7c3a91;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  color: #9d4caf;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  color: #9d4caf;
+  background: linear-gradient( #efbee472, #ffe0f0);
+}
+
+
+/* Giriş & Kayıt Formları */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+form input {
+  padding: 10px;
+  width: 250px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: #9d4caf;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #7c3a91;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menu {
+    width: 65px;
+  }
+
+  .menu:hover {
+    width: 200px;
+  }
+
+  .container {
+    margin-left: 65px;
+  }
+}
+
+
+.sakura {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.leaf {
+  position: absolute;
+  top: -5%;
+  width: 12px;
+  height: 20px;
+  background: radial-gradient(ellipse at center, #ffcad4 0%, #f88fb1 100%);
+  border-radius: 60% 40% 60% 40%;
+  animation: fall 10s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) translateX(var(--sway)) rotate(360deg);
+  }
+}
+
+
+
+/* Yapraklara özel konum ve animasyon gecikmeleri */
+.leaf:nth-child(1) { left: 5%; animation-delay: 0s; --sway: 10vw; }
+.leaf:nth-child(2) { left: 15%; animation-delay: 1s; --sway: -10vw; }
+.leaf:nth-child(3) { left: 25%; animation-delay: 2s; --sway: 5vw; }
+.leaf:nth-child(4) { left: 35%; animation-delay: 3s; --sway: -5vw; }
+.leaf:nth-child(5) { left: 45%; animation-delay: 4s; --sway: 15vw; }
+.leaf:nth-child(6) { left: 55%; animation-delay: 5s; --sway: -15vw; }
+.leaf:nth-child(7) { left: 65%; animation-delay: 6s; --sway: 8vw; }
+.leaf:nth-child(8) { left: 75%; animation-delay: 7s; --sway: -8vw; }
+.leaf:nth-child(9) { left: 85%; animation-delay: 8s; --sway: 12vw; }
+.leaf:nth-child(10) { left: 95%; animation-delay: 9s; --sway: -12vw; }
+
+
+
+.btn {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn_item {
+  background: white;
+  border-radius: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 10px 30px;
+  transition: all 0.3s ease;
+}
+
+.btn_item:hover {
+  background: #ff4081;
+}
+
+.btn_item a {
+  color: #333;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.btn_item:hover a {
+  color: white;
+}

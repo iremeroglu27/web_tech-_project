@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Aile Bireyleri - Quiz</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fff0f5;
+      padding: 30px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #9d4caf;
+    }
+
+    .question-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .question {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .options button {
+      display: block;
+      margin: 8px 0;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      background: #eee;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .options button:hover {
+      background: #ddd;
+    }
+
+    .correct {
+      background-color: #c8e6c9 !important;
+      color: green;
+    }
+
+    .incorrect {
+      background-color: #ffcdd2 !important;
+      color: red;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    #scoreBox {
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #6a1b9a;
+      margin-top: 40px;
+      border-top: 2px solid #9d4caf;
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Aile Bireyleri / Family Members - Quiz</h1>
+  <div id="quiz-container"></div>
+  <div id="scoreBox"></div>
+
+  <script>
+    const quizData = [
+      { q: "My ______ is my mother's husband.", options: ["father", "uncle", "cousin", "brother"], correct: 0 },
+      { q: "My ______ is my dad's sister.", options: ["aunt", "cousin", "brother", "mother"], correct: 0 },
+      { q: "My ______ is my mom’s mom.", options: ["grandmother", "sister", "aunt", "cousin"], correct: 0 },
+      { q: "My ______ is my sibling.", options: ["brother", "uncle", "father", "baby"], correct: 0 },
+      { q: "I love my ______. He is very old.", options: ["grandfather", "son", "baby", "cousin"], correct: 0 },
+      { q: "Bu benim annem.", options: ["This is my mother", "That is my mother", "She is my mother", "My this is mother"], correct: 0 },
+      { q: "O benim erkek kardeşim.", options: ["He is my brother", "Brother is my he", "My he is brother", "He my brother is"], correct: 0 },
+      { q: "Onun iki çocuğu var.", options: ["She has two children", "Two children she has", "She have two children", "Children she two has"], correct: 0 },
+      { q: "Büyükbabam çok yaşlı.", options: ["My grandfather is very old", "Very old my grandfather is", "Grandfather is very old my", "Old is my grandfather"], correct: 0 },
+      { q: "Kuzenim Almanya’da yaşıyor.", options: ["My cousin lives in Germany", "Cousin my live Germany", "My cousin live Germany", "My cousin living in Germany"], correct: 0 },
+      { q: "Choose the correct sentence:", options: ["She is my sister", "She my is sister", "Sister she is", "My she is sister"], correct: 0 },
+      { q: "Which is correct?", options: ["He has a big family", "He have a big family", "He having a big family", "He has big a family"], correct: 0 },
+      { q: "“They are my cousins.” – What is the verb?", options: ["are", "cousins", "they", "my"], correct: 0 },
+      { q: "Which sentence is grammatically correct?", options: ["My aunt lives in Paris", "My aunt live in Paris", "Aunt my lives in Paris", "My aunt living in Paris"], correct: 0 },
+      { q: "What is the plural of “family member”?", options: ["family members", "familys member", "families member", "member family"], correct: 0 }
+    ];
+
+    const quizContainer = document.getElementById("quiz-container");
+    const scoreBox = document.getElementById("scoreBox");
+
+    let totalScore = 0;
+    let answeredCount = 0;
+
+    quizData.forEach((item, index) => {
+      const box = document.createElement("div");
+      box.className = "question-box";
+
+      const question = document.createElement("div");
+      question.className = "question";
+      question.textContent = `${index + 1}. ${item.q}`;
+      box.appendChild(question);
+
+      const options = document.createElement("div");
+      options.className = "options";
+
+      item.options.forEach((opt, i) => {
+        const btn = document.createElement("button");
+        btn.textContent = opt;
+
+        btn.onclick = function () {
+          if (btn.parentNode.querySelector(".correct, .incorrect")) return;
+
+          const allButtons = btn.parentNode.querySelectorAll("button");
+          allButtons.forEach(b => b.disabled = true);
+
+          const feedback = document.createElement("div");
+          feedback.className = "feedback";
+
+          if (i === item.correct) {
+            btn.classList.add("correct");
+            feedback.textContent = "✅ Doğru (True)";
+            totalScore += 5;
+          } else {
+            btn.classList.add("incorrect");
+            feedback.textContent = "❌ Yanlış (False)";
+
+            const answer = document.createElement("div");
+            answer.className = "answer";
+            answer.textContent = `Doğru cevap: ${item.options[item.correct]}`;
+            feedback.appendChild(answer);
+          }
+
+          answeredCount++;
+          if (answeredCount === quizData.length) {
+  scoreBox.innerHTML = `Toplam Puanınız: <strong>${totalScore}</strong> / ${quizData.length * 5}`;
+
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  if (currentUser) {
+    const prevScore = parseInt(localStorage.getItem("totalScore")) || 0;
+    const newTotal = prevScore + totalScore;
+
+    localStorage.setItem("totalScore", newTotal);
+
+    // Kullanıcının kendi profiline de puanı ekle
+    currentUser.score = newTotal;
+    localStorage.setItem(currentUser.email, JSON.stringify(currentUser));
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  }
+}
+
+
+          box.appendChild(feedback);
+        };
+
+        options.appendChild(btn);
+      });
+
+      box.appendChild(options);
+      quizContainer.appendChild(box);
+    });
+  </script>
+</body>
+</html>

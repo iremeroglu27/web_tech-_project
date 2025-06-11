@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wizzle - Language Lessons</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <script>
+    // Giriş yapmayan kullanıcıyı yönlendir
+    window.onload = function () {
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (!currentUser) {
+        alert("Dersleri görüntülemek için giriş yapmalısınız.");
+        window.location.href = "login.html";
+      }
+    };
+  </script>
+
+  <div class="menu">
+    <ul class="menu-content">
+      <li><a href="index.html"><span class="material-symbols-outlined">home</span><span> Ana Sayfa</span></a></li>
+      <li><a href="lesson.html"><span class="material-symbols-outlined">menu_book</span><span> Dersler</span></a></li>
+      <li><a href="profile.html"><span class="material-symbols-outlined">person</span><span> Profil</span></a></li>
+      <li><a href="login.html"><span class="material-symbols-outlined">login</span><span> Giriş</span></a></li>
+      <li><a href="signup.html"><span class="material-symbols-outlined">person_add</span><span> Kayıt Ol</span></a></li>
+      <li><a href="#"><span class="material-symbols-outlined">logout</span><span> Çıkış</span></a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <!-- Sayfada görsel efekt olarak sakura yaprakları ekliyoruz -->
+    <div class="sakura">
+      <!-- Yaprak elemanlarını oluşturuyoruz -->
+      <!-- Bunların hareketi CSS ile ayarlanacak -->
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+
+    <header>
+      <h1>Wizzle</h1>
+      <nav>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="profile.html">Profil</a>
+      </nav>
+    </header>
+
+    <h1 style="margin-bottom: 30px; color: #9d4caf;">DERSLER / LESSONS</h1>
+    <hr>
+
+    <div class="main-container">
+      <!-- A1 -->
+      <div class="level-box">
+        <h2>A1</h2>
+        <button class="lesson-btn" onclick="openModal('modal-sayilar')">Sayılar / Numbers</button>
+        <button class="lesson-btn" onclick="openModal('modal-renkler')">Renkler / Colors</button>
+        <button class="lesson-btn" onclick="openModal('modal-aile')">Aile Bireyleri / Family Members</button>
+      </div>
+
+      <!-- A2 -->
+      <div class="level-box">
+        <h2>A2</h2>
+        <button class="lesson-btn" onclick="openModal('modal-eylemler')">Günlük Eylemler / Daily Actions</button>
+        <button class="lesson-btn" onclick="openModal('modal-yiyecek')">Yiyecek-İçecek / Food-Drinks</button>
+        <button class="lesson-btn" onclick="openModal('modal-filmler')">Film Türleri / Movie Genres</button>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Wizzle</p>
+    </footer>
+  </div>
+
+  <!-- Modals -->
+  <div id="modal-sayilar" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-sayilar')">&times;</span>
+      <h3>Sayılar / Numbers</h3>
+      <a href="quiz_sayilar.html" class="modal-button">Quizler</a>
+      <a href="flashcard_sayilar.html" class="modal-button">Flashcardlar</a>
+    </div>
+  </div>
+
+  <div id="modal-renkler" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-renkler')">&times;</span>
+      <h3>Renkler / Colors</h3>
+      <a href="quiz_renkler.html" class="modal-button">Quizler</a>
+      <a href="flashcard_renkler.html" class="modal-button">Flashcardlar</a>
+    </div>
+  </div>
+
+  <div id="modal-aile" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-aile')">&times;</span>
+      <h3>Aile Bireyleri / Family Members</h3>
+      <a href="quiz_aile.html" class="modal-button">Quizler</a>
+      <a href="flashcard_aile.html" class="modal-button">Flashcardlar</a>
+    </div>
+  </div>
+
+  <div id="modal-eylemler" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-eylemler')">&times;</span>
+      <h3>Günlük Eylemler / Daily Actions</h3>
+      <a href="quiz_eylemler.html" class="modal-button">Quizler</a>
+      <a href="flashcard_eylemler.html" class="modal-button">Flashcardlar</a>
+    </div>
+  </div>
+
+  <div id="modal-yiyecek" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-yiyecek')">&times;</span>
+      <h3>Yiyecek - İçecek / Food - Drinks</h3>
+      <a href="quiz_yiyecek.html" class="modal-button">Quizler</a>
+      <a href="flashcard_yiyecek.html" class="modal-button">Flashcardlar</a>
+    </div>
+  </div>
+
+  <div id="modal-filmler" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-filmler')">&times;</span>
+      <h3>Film Türleri / Movie Genres</h3>
+      <a href="quiz_filmler.html" class="modal-button">Quizler</a>
+      <a href="flashcard_filmler.html" class="modal-button">Flashcardlar</a>
+    </div>
+  </div>
+
+  <!-- Modal script -->
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    window.onclick = function (event) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    };
+  </script>
+</body>
+</html>

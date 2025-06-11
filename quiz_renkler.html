@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Renkler - Quiz</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fff0f5;
+      padding: 30px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #9d4caf;
+    }
+
+    .question-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .question {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .options button {
+      display: block;
+      margin: 8px 0;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      background: #eee;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .options button:hover {
+      background: #ddd;
+    }
+
+    .correct {
+      background-color: #c8e6c9 !important;
+      color: green;
+    }
+
+    .incorrect {
+      background-color: #ffcdd2 !important;
+      color: red;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .answer {
+      margin-top: 5px;
+      color: #555;
+      font-style: italic;
+    }
+
+    #scoreBox {
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #6a1b9a;
+      margin-top: 40px;
+      border-top: 2px solid #9d4caf;
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Renkler / Colors - Quiz</h1>
+  <div id="quiz-container"></div>
+  <div id="scoreBox"></div>
+
+  <script>
+    const quizData = [
+      // Boşluk doldurma
+      { q: "The sky is ______.", options: ["blue", "cat", "slow", "four"], correct: 0 },
+      { q: "Bananas are ______.", options: ["yellow", "red", "book", "fast"], correct: 0 },
+      { q: "Apples are ______.", options: ["red", "dog", "seven", "table"], correct: 0 },
+      { q: "The grass is ______.", options: ["green", "blue", "ten", "fast"], correct: 0 },
+      { q: "Snow is ______.", options: ["white", "black", "orange", "purple"], correct: 0 },
+
+      // Çeviri
+      { q: "Elma kırmızıdır.", options: ["The apple is red", "Apple red is", "Is red apple", "Apple is the red"], correct: 0 },
+      { q: "Gökyüzü mavidir.", options: ["The sky is blue", "Sky blue is", "Blue sky is", "Is blue sky"], correct: 0 },
+      { q: "Arabam siyahtır.", options: ["My car is black", "Car my is black", "My black is car", "Is car my black"], correct: 0 },
+      { q: "Güneş sarıdır.", options: ["The sun is yellow", "Sun is the yellow", "The yellow is sun", "Yellow is the sun"], correct: 0 },
+      { q: "Güller pembedir.", options: ["Roses are pink", "Pink are roses", "Are pink roses", "Roses pink are"], correct: 0 },
+
+      // Gramer
+      { q: "Which is correct?", options: ["The flowers are red", "The flower are red", "The flowers is red", "Flower are red"], correct: 0 },
+      { q: "Choose the correct verb: “The car ____ white.”", options: ["is", "are", "be", "am"], correct: 0 },
+      { q: "“Green” is a:", options: ["color", "number", "verb", "pronoun"], correct: 0 },
+      { q: "Which word is NOT a color?", options: ["red", "table", "blue", "orange"], correct: 1 },
+      { q: "“The apples are green.” – What is the subject?", options: ["The apples", "green", "are", "apples green"], correct: 0 }
+    ];
+
+    const quizContainer = document.getElementById("quiz-container");
+    const scoreBox = document.getElementById("scoreBox");
+
+    let totalScore = 0;
+    let answeredCount = 0;
+
+    quizData.forEach((item, index) => {
+      const box = document.createElement("div");
+      box.className = "question-box";
+
+      const question = document.createElement("div");
+      question.className = "question";
+      question.textContent = `${index + 1}. ${item.q}`;
+      box.appendChild(question);
+
+      const options = document.createElement("div");
+      options.className = "options";
+
+      item.options.forEach((opt, i) => {
+        const btn = document.createElement("button");
+        btn.textContent = opt;
+
+        btn.onclick = function () {
+          if (btn.parentNode.querySelector(".correct, .incorrect")) return;
+
+          const allButtons = btn.parentNode.querySelectorAll("button");
+          allButtons.forEach(b => b.disabled = true);
+
+          const feedback = document.createElement("div");
+          feedback.className = "feedback";
+
+          if (i === item.correct) {
+            btn.classList.add("correct");
+            feedback.textContent = "✅ Doğru (True)";
+            totalScore += 5;
+          } else {
+            btn.classList.add("incorrect");
+            feedback.textContent = "❌ Yanlış (False)";
+            const answer = document.createElement("div");
+            answer.className = "answer";
+            answer.textContent = `Doğru cevap: ${item.options[item.correct]}`;
+            feedback.appendChild(answer);
+          }
+
+          answeredCount++;
+          if (answeredCount === quizData.length) {
+            scoreBox.innerHTML = `Toplam Puanınız: <strong>${totalScore}</strong> / ${quizData.length * 5}`;
+            const prevScore = parseInt(localStorage.getItem("totalScore")) || 0;
+            localStorage.setItem("totalScore", prevScore + totalScore);
+          }
+
+          box.appendChild(feedback);
+        };
+
+        options.appendChild(btn);
+      });
+
+      box.appendChild(options);
+      quizContainer.appendChild(box);
+    });
+  </script>
+</body>
+</html>
+

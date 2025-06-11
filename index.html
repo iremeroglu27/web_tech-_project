@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wizzle - Ana Sayfa</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link rel="stylesheet" href="css/style.css" />
+  
+</head>
+<body>
+  <div class="menu">
+    <ul class="menu-content">
+      <li><a href="index.html"><span class="material-symbols-outlined">home</span><span> Ana Sayfa</span></a></li>
+      <li><a href="lesson.html"><span class="material-symbols-outlined">menu_book</span><span> Dersler</span></a></li>
+      <li><a href="profile.html"><span class="material-symbols-outlined">person</span><span> Profil</span></a></li>
+      <li><a href="login.html"><span class="material-symbols-outlined">login</span><span> Giriş</span></a></li>
+      <li><a href="signup.html"><span class="material-symbols-outlined">person_add</span><span> Kayıt Ol</span></a></li>
+      <li><a href="#"><span class="material-symbols-outlined">logout</span><span> Çıkış</span></a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <div class="sakura">
+      <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+      <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+    </div>
+
+    <header>
+      <h1>Wizzle</h1>
+      <nav>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="profile.html">Profil</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <h1 style="margin-bottom: 60px; color: #9d4caf;">Let's Learn English</h1>
+      <p style="text-align: center; color: #9d4caf;">İngilizce Öğrenmek Artık Çok Kolay.</p>
+
+      <div class="btn">
+        <div class="btn_item" onclick="goToLessons()">
+          <a href="#">Start</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Wizzle</p>
+      <div class="contact-info">
+          
+          <a href="index.html" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;">Ana Sayfa</a>
+          <a href="lesson.html" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;">Dersler</a>
+          <a href="profile.html" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;">Profil</a>
+          <a href="login.html" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;">Giris Yap</a>
+          <a href="signup.html" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;">Kayıt Ol</a>
+          <a href="mailto:wizzleducation@gmail.com" style="color: #9d4caf ;text-decoration: none; margin-right: 10px;" >Email</a>
+        </div>
+    </footer>
+  </div>
+
+  <script>
+    function goToLessons() {
+      const user = localStorage.getItem("user");
+      if (user) {
+        window.location.href = "lesson.html";
+      } else {
+        alert("Derslere erişmek için önce giriş yapmalısınız.");
+        window.location.href = "login.html";
+      }
+    }
+  </script>
+</body>
+</html>

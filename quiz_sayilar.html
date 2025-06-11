@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sayılar - Quiz</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fff0f5;
+      padding: 30px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #9d4caf;
+    }
+
+    .question-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .question {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .options button {
+      display: block;
+      margin: 8px 0;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      background: #eee;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .options button:hover {
+      background: #ddd;
+    }
+
+    .correct {
+      background-color: #c8e6c9 !important;
+      color: green;
+    }
+
+    .incorrect {
+      background-color: #ffcdd2 !important;
+      color: red;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .answer {
+      margin-top: 5px;
+      color: #555;
+      font-style: italic;
+    }
+
+    #scoreBox {
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #6a1b9a;
+      margin-top: 40px;
+      border-top: 2px solid #9d4caf;
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Sayılar / Numbers - Quiz</h1>
+  <div id="quiz-container"></div>
+  <div id="scoreBox"></div>
+
+  <script>
+    const quizData = [
+      { q: "I have ______ apples.", options: ["two", "red", "dog", "slow"], correct: 0 },
+      { q: "There are ______ books on the table.", options: ["five", "blue", "fast", "pen"], correct: 0 },
+      { q: "She is ______ years old.", options: ["ten", "table", "nice", "cat"], correct: 0 },
+      { q: "We have ______ pens.", options: ["seven", "slow", "big", "apple"], correct: 0 },
+      { q: "I see ______ birds in the tree.", options: ["three", "book", "fast", "fish"], correct: 0 },
+      { q: "Bir kalemim var.", options: ["I have one pen", "I have pen two", "I one have pen", "Have I one pen"], correct: 0 },
+      { q: "O dört yaşında.", options: ["He is four years old", "Four he is old", "He four is", "Is he four years"], correct: 0 },
+      { q: "İki elma istiyorum.", options: ["I want two apples", "Want I two apples", "I want apples two", "I wants two apple"], correct: 0 },
+      { q: "Üç kardeşim var.", options: ["I have three brothers", "Three I brothers have", "I brothers three have", "I have brother three"], correct: 0 },
+      { q: "On kitap okudum.", options: ["I read ten books", "I read books ten", "Read I ten books", "I ten read books"], correct: 0 },
+      { q: "Which is correct?", options: ["She has two cats", "She have two cats", "She has two cat", "She haves two cats"], correct: 0 },
+      { q: "Which sentence is correct?", options: ["I am ten", "I ten am", "Am I ten", "Ten I am"], correct: 0 },
+      { q: "Choose the correct article: 'I have ____ apple.'", options: ["an", "a", "the", "some"], correct: 0 },
+      { q: "What is the plural of 'child'?", options: ["children", "childs", "childes", "childer"], correct: 0 },
+      { q: "Select the correct question:", options: ["How old are you?", "How are you old?", "How you are old?", "You how old are?"], correct: 0 },
+    ];
+
+    const quizContainer = document.getElementById("quiz-container");
+    const scoreBox = document.getElementById("scoreBox");
+
+    let totalScore = 0;
+    let answeredCount = 0;
+
+    quizData.forEach((item, index) => {
+      const box = document.createElement("div");
+      box.className = "question-box";
+
+      const question = document.createElement("div");
+      question.className = "question";
+      question.textContent = `${index + 1}. ${item.q}`;
+      box.appendChild(question);
+
+      const options = document.createElement("div");
+      options.className = "options";
+
+      item.options.forEach((opt, i) => {
+        const btn = document.createElement("button");
+        btn.textContent = opt;
+
+        btn.onclick = function () {
+          if (btn.parentNode.querySelector(".correct, .incorrect")) return;
+
+          const allButtons = btn.parentNode.querySelectorAll("button");
+          allButtons.forEach(b => b.disabled = true);
+
+          const feedback = document.createElement("div");
+          feedback.className = "feedback";
+
+          if (i === item.correct) {
+            btn.classList.add("correct");
+            feedback.textContent = "✅ Doğru (True)";
+            totalScore += 5;
+          } else {
+            btn.classList.add("incorrect");
+            feedback.textContent = "❌ Yanlış (False)";
+            const answer = document.createElement("div");
+            answer.className = "answer";
+            answer.textContent = `Doğru cevap: ${item.options[item.correct]}`;
+            feedback.appendChild(answer);
+          }
+
+          answeredCount++;
+          if (answeredCount === quizData.length) {
+            scoreBox.innerHTML = `Toplam Puanınız: <strong>${totalScore}</strong> / ${quizData.length * 5}`;
+
+            // localStorage'a ekle
+            const prevScore = parseInt(localStorage.getItem("totalScore")) || 0;
+            localStorage.setItem("totalScore", prevScore + totalScore);
+          }
+
+          box.appendChild(feedback);
+        };
+
+        options.appendChild(btn);
+      });
+
+      box.appendChild(options);
+      quizContainer.appendChild(box);
+    });
+  </script>
+</body>
+</html>
+

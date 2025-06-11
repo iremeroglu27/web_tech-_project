@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wizzle - Log In to Your Account</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- Sol Menü -->
+  <div class="menu">
+    <ul class="menu-content">
+      <li><a href="index.html"><span class="material-symbols-outlined">home</span><span>Ana Sayfa</span></a></li>
+      <li><a href="lesson.html"><span class="material-symbols-outlined">menu_book</span><span>Dersler</span></a></li>
+      <li><a href="profile.html"><span class="material-symbols-outlined">person</span><span>Profil</span></a></li>
+      <li><a href="login.html"><span class="material-symbols-outlined">login</span><span>Giriş</span></a></li>
+      <li><a href="signup.html"><span class="material-symbols-outlined">person_add</span><span>Kayıt Ol</span></a></li>
+      <li><a href="#" onclick="logout()"><span class="material-symbols-outlined">logout</span><span>Çıkış</span></a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <!-- Sayfada görsel efekt olarak sakura yaprakları ekliyoruz -->
+    <div class="sakura">
+      <!-- Yaprak elemanlarını oluşturuyoruz -->
+      <!-- Bunların hareketi CSS ile ayarlanacak -->
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+
+    <div class="sayfa">
+      <header>
+        <h1>Wizzle</h1>
+        <nav>
+          <a href="index.html">Ana Sayfa</a>
+          <a href="signup.html">Kayıt Ol</a>
+        </nav>
+      </header>
+
+      <main>
+        <div class="form-container">
+          <h1 style="margin-bottom: 30px; color: #9d4caf;">Giriş Yap</h1>
+          <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="Email" required />
+            <input type="password" id="loginPassword" placeholder="Şifre" required />
+            <button type="submit">Giriş</button>
+          </form>
+          <p id="loginMessage" style="text-align:center; margin-top:10px;"></p>
+        </div>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 Wizzle</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Giriş Kontrolü -->
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value;
+
+      const storedUser = JSON.parse(localStorage.getItem(email));
+
+      if (storedUser && storedUser.email === email && storedUser.password === password) {
+        // Eğer totalScore yoksa ekle
+        if (!storedUser.totalScore) storedUser.totalScore = 0;
+
+        // Kullanıcıyı oturuma al
+        localStorage.setItem("currentUser", JSON.stringify(storedUser));
+
+        document.getElementById("loginMessage").style.color = "green";
+        document.getElementById("loginMessage").textContent = "✅ Giriş başarılı! Yönlendiriliyorsunuz...";
+
+        setTimeout(() => {
+          window.location.href = "lesson.html";
+        }, 1500);
+      } else {
+        document.getElementById("loginMessage").style.color = "red";
+        document.getElementById("loginMessage").textContent = "❌ Hatalı e-posta veya şifre!";
+      }
+    });
+
+    // Oturumu sonlandırma (Menüdeki Çıkış butonuna bağlı)
+    function logout() {
+      localStorage.removeItem("currentUser");
+      alert("Çıkış yapıldı.");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
+
+
