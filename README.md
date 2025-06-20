@@ -45,7 +45,7 @@ Uygulamada iki seviye konu bulunmaktadır:
 | Ad Soyad                          | Öğrenci Numarası |
 |----------------------------------|------------------|
 | İrem Eroğlu                      | 240229022        |
-| Nour Cangeez                    | 240229103        |
+| Nour Jankeez                    | 240229103        |
 | İmen Elinat                       | 240229015        |
 | Zulfia Nazar Gul Saleem Gul     | 230229014        |
 
